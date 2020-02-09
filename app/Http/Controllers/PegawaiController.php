@@ -39,6 +39,14 @@ class PegawaiController extends Controller
 
 	// method untuk insert data ke table pegawai
 	public function doAdd(Request $request){
+        // validate
+        $this->validate($request,[
+            'nama' => 'required|min:3',
+            'jabatan' => 'required',
+            'umur' => 'required|numeric|min:17',
+            'alamat' => 'required'
+        ]);
+        
 		// insert data ke table pegawai
 		DB::table('pegawai')->insert([
 		'pegawai_nama' => $request->nama,
