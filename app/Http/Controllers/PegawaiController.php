@@ -13,7 +13,7 @@ class PegawaiController extends Controller
     public function index(){
     	// mengambil data dari table pegawai
     	//$pegawai = DB::table('pegawai')->orderBy('pegawai_id')->get();
-        $pegawai = DB::table('pegawai')->orderBy('pegawai_id','desc')->paginate(10);
+        $pegawai = DB::table('pegawai')->orderBy('pegawai_id','desc')->paginate(5);
 
     	// mengirim data pegawai ke view index
     	return view('index',['pegawai' => $pegawai]);
@@ -25,7 +25,7 @@ class PegawaiController extends Controller
         $cari = $request->cari;
 
         // mengambil data dari table pegawai sesuai pencarian data
-        $pegawai = DB::table('pegawai')->where('pegawai_nama','like',"%".$cari."%")->paginate();
+        $pegawai = DB::table('pegawai')->where('pegawai_nama','like',"%".$cari."%")->paginate(5);
 
          // mengirim data pegawai ke view index
         return view('index',['pegawai' => $pegawai]);
