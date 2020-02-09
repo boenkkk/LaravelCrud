@@ -10,15 +10,14 @@
 		<div class="card">
 			<div class="card-body">
 				<h2 class="text-center"><a href="https://www.malasngoding.com">www.malasngoding.com</a></h2>
-				<h3>Data Pegawai</h3>
-
-				<a href="/pegawai/tambah"> + Tambah Pegawai Baru</a>
+				<a href="/pegawai"><h3>Data Pegawai</h3></a>
+				<a href="/pegawai/add"> + Tambah Pegawai Baru</a>
 
 				<br/><br/>
 
 				<div class="form-group">
-					<form action="/pegawai/cari" method="GET" class="form-inline">
-						<input class="form-inline" type="text" name="cari" placeholder="Cari Pegawai .." value="{{ old('cari') }}">
+					<form action="/pegawai/search" method="GET" class="form-inline">
+						<input class="form-inline" type="text" name="search" placeholder="Cari Pegawai .." value="{{ old('search') }}">
 						<input class="btn btn-primary" type="submit" value="CARI">
 					</form>
 				</div>
@@ -39,7 +38,7 @@
 						<td>{{ $p->pegawai_alamat }}</td>
 						<td>
 							<a class="btn btn-warning btn-sm" href="/pegawai/edit/{{ $p->pegawai_id }}">Edit</a>
-							<a class="btn btn-danger btn-sm" href="/pegawai/hapus/{{ $p->pegawai_id }}">Hapus</a>
+							<a class="btn btn-danger btn-sm" href="/pegawai/delete/{{ $p->pegawai_id }}">Hapus</a>
 						</td>
 					</tr>
 					@endforeach

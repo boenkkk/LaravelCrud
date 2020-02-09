@@ -19,26 +19,26 @@ class PegawaiController extends Controller
     	return view('index',['pegawai' => $pegawai]);
     }
 
-    public function cari(Request $request)
+    public function search(Request $request)
     {
         // menangkap data pencarian
-        $cari = $request->cari;
+        $search = $request->search;
 
         // mengambil data dari table pegawai sesuai pencarian data
-        $pegawai = DB::table('pegawai')->where('pegawai_nama','like',"%".$cari."%")->paginate(5);
+        $pegawai = DB::table('pegawai')->where('pegawai_nama','like',"%".$search."%")->paginate(5);
 
          // mengirim data pegawai ke view index
         return view('index',['pegawai' => $pegawai]);
     }
 
     // method untuk menampilkan view form tambah pegawai
-    public function tambah(){
+    public function add(){
 		// memanggil view tambah
-		return view('tambah');
+		return view('add');
 	}
 
 	// method untuk insert data ke table pegawai
-	public function store(Request $request){
+	public function doAdd(Request $request){
 		// insert data ke table pegawai
 		DB::table('pegawai')->insert([
 		'pegawai_nama' => $request->nama,
@@ -61,7 +61,7 @@ class PegawaiController extends Controller
 	}
 
 	// update data pegawai
-	public function update(Request $request){
+	public function doEdit(Request $request){
 		// update data pegawai
 		DB::table('pegawai')->where('pegawai_id',$request->id)->update([
 		'pegawai_nama' => $request->nama,
@@ -74,7 +74,7 @@ class PegawaiController extends Controller
 		return redirect('/pegawai');
 	}
 
-	public function hapus($id){
+	public function delete($id){
 		// delete data pegawai
 		DB::table('pegawai')->where('pegawai_id',$id)->delete();
 

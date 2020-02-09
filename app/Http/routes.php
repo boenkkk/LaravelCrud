@@ -15,14 +15,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Read
 Route::get('/pegawai','PegawaiController@index');
-Route::get('/pegawai/cari','PegawaiController@cari');
+Route::get('/pegawai/search','PegawaiController@search');
 
-Route::get('/pegawai/tambah','PegawaiController@tambah');
+//Create
+Route::get('/pegawai/add','PegawaiController@add');
+Route::post('/pegawai/doAdd','PegawaiController@doAdd');
 
-Route::post('/pegawai/store','PegawaiController@store');
-
+//Update
 Route::get('/pegawai/edit/{id}','PegawaiController@edit');
-Route::post('/pegawai/update','PegawaiController@update');
+Route::post('/pegawai/doEdit','PegawaiController@doEdit');
 
-Route::get('/pegawai/hapus/{id}','PegawaiController@hapus');
+//Delete
+Route::get('/pegawai/delete/{id}','PegawaiController@delete');
